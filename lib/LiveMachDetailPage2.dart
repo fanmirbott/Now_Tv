@@ -65,7 +65,7 @@ The Whites will be slightly wary of the dreaded second-season syndrome, and Biel
                             ),
                           ),
                           Row(
-                            spacing: 20,
+                            spacing: 10,
                             children: [
                               IconButton(
                                 onPressed: () {},
@@ -104,41 +104,44 @@ The Whites will be slightly wary of the dreaded second-season syndrome, and Biel
                           ),
                         ),
                         SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              alignment: Alignment.center,
-                              width: 34,
-                              height: 17,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFD0F00),
-                                borderRadius: BorderRadiusGeometry.circular(10),
-                              ),
-                              child: Text(
-                                "LIVE",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 10,
-                                  color: Color(0xFFFFFFFF),
-                                  decoration: TextDecoration.none,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                width: 34,
+                                height: 17,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFD0F00),
+                                  borderRadius: BorderRadiusGeometry.circular(10),
+                                ),
+                                child: Text(
+                                  "LIVE",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 10,
+                                    color: Color(0xFFFFFFFF),
+                                    decoration: TextDecoration.none,
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 241),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.settings, color: Colors.white),
-                            ),
-                            SizedBox(width: 10),
-                            IconButton(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "assets/arrows.svg",
-                                width: 22,
+                              SizedBox(width: 270),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.settings, color: Colors.white),
                               ),
-                            ),
-                          ],
+                              SizedBox(width: 5,),
+                              IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  "assets/arrows.svg",
+                                  width: 22,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

@@ -44,7 +44,7 @@ They drew 0-0 away to Sassuolo then suffered a narrow 1-0 defeat at home to Mila
             child: Stack(
               children: [
                 Image.asset(
-                  "assets/img.png",
+                  "assets/homePageBar/liveOrOffline/img.png",
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),

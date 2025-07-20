@@ -1,6 +1,12 @@
 import 'package:dars10/home_page_state_center.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:dars10/explore_page.dart';
+import 'package:dars10/live_page.dart';
+import 'package:dars10/reward_page.dart';
+import 'package:dars10/profile_page.dart';
+import 'package:dars10/HomePageBody.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,36 +17,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int isActive = 0;
-  int barActive = 0;
 
-  int activInd = 0;
-  Color isColor = Color(0xFFEAEAEA);
-
-  List<String> items = [
-    "Today, 12 Sep",
-    "Mon, 13 sep",
-    "Tue, 14 sep",
-    "Wed, 15 sep",
-    "Thu, 16 sep",
-    "Fri, 17 sep",
-    "Sat, 18 sep",
+  final List<Widget> pages = [
+    HomePageBody(),
+    ExplorePage(),
+    LivePage(),
+    RewardPage(),
+    ProfilePage(),
   ];
-
-  List<Widget> items1 = [
-    Text(
-      "ALL",
-      style: TextStyle(
-        fontSize: 15,
-        fontWeight: FontWeight.w500,
-        color: Color(0xFFFFFFFF),
-      ),
-    ),
-    Image.asset("assets/img_1.png"),
-    Image.asset("assets/img_2.png"),
-    Image.asset("assets/img_3.png"),
-    Image.asset("assets/img_4.png"),
-  ];
-
   List<Map<String, String>> items2 = [
     {"icon": "assets/home.svg", "label": "Home"},
     {"icon": "assets/explore.svg", "label": "Explore"},
@@ -111,12 +95,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1E1E1E),
-        title: Text(
-          "NOW TV",
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-            color: Color(0xFFFFFFFF),
+        title: Positioned(
+          child: Text(
+            "NOW TV",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w800,
+              color: Color(0xFFFFFFFF),
+            ),
           ),
         ),
         actions: [
@@ -166,85 +152,91 @@ class _HomePageState extends State<HomePage> {
         }),
       ),
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 1.7),
-            SizedBox(
-              width: 390,
-              height: 50,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 10,
-                  children: [
-                    ...List.generate(items.length, (index) {
-                      return TextButton(
-                        onPressed: () {
-                          barActive = index;
-                          setState(() {});
-                        },
-                        style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(6),
-                          ),
-                          backgroundColor: barActive == index
-                              ? Color(0xFFFFFFFF)
-                              : Color(0xFF282828),
-                          side: BorderSide(
-                            color: barActive == index
-                                ? Color(0xFFFFFFFF)
-                                : Color(0xFF8D8D8D),
-                          ),
-                        ),
-                        child: Text(
-                          items[index],
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            color: Color(0xFF8D8D8D),
-                          ),
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 17),
-            SizedBox(
-              width: 390,
-              height: 72,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 15,
-                  children: [
-                    ...List.generate(items1.length, (index1) {
-                      return TextButton(
-                        onPressed: () {
-                          activInd = index1;
-                          setState(() {});
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFF373737),
-                          fixedSize: Size(54, 54),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: items1[index1],
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 21),
-            HomePageStateCenter(matches: matches),
-          ],
-        ),
+      body: IndexedStack(
+        index: isActive,
+        children: pages,
       ),
     );
   }
 }
+
+
+//SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             SizedBox(height: 1.7),
+//             SizedBox(
+//               width: 390,
+//               height: 50,
+//               child: SingleChildScrollView(
+//                 scrollDirection: Axis.horizontal,
+//                 child: Row(
+//                   spacing: 10,
+//                   children: [
+//                     ...List.generate(items.length, (index) {
+//                       return TextButton(
+//                         onPressed: () {
+//                           barActive = index;
+//                           setState(() {});
+//                         },
+//                         style: TextButton.styleFrom(
+//                           shape: RoundedRectangleBorder(
+//                             borderRadius: BorderRadiusGeometry.circular(6),
+//                           ),
+//                           backgroundColor: barActive == index
+//                               ? Color(0xFFFFFFFF)
+//                               : Color(0xFF282828),
+//                           side: BorderSide(
+//                             color: barActive == index
+//                                 ? Color(0xFFFFFFFF)
+//                                 : Color(0xFF8D8D8D),
+//                           ),
+//                         ),
+//                         child: Text(
+//                           items[index],
+//                           style: TextStyle(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 15,
+//                             color: Color(0xFF8D8D8D),
+//                           ),
+//                         ),
+//                       );
+//                     }),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             SizedBox(height: 17),
+//             SizedBox(
+//               width: 390,
+//               height: 72,
+//               child: SingleChildScrollView(
+//                 scrollDirection: Axis.horizontal,
+//                 child: Row(
+//                   spacing: 15,
+//                   children: [
+//                     ...List.generate(items1.length, (index1) {
+//                       return TextButton(
+//                         onPressed: () {
+//                           activInd = index1;
+//                           setState(() {});
+//                         },
+//                         style: TextButton.styleFrom(
+//                           backgroundColor: Color(0xFF373737),
+//                           fixedSize: Size(54, 54),
+//                         ),
+//                         child: Padding(
+//                           padding: const EdgeInsets.all(5),
+//                           child: items1[index1],
+//                         ),
+//                       );
+//                     }),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             SizedBox(height: 21),
+//             HomePageStateCenter(matches: matches),
+//           ],
+//         ),
+//       ),
