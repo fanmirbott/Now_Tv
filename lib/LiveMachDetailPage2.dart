@@ -52,13 +52,7 @@ The Whites will be slightly wary of the dreaded second-season syndrome, and Biel
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => HomePage(),
-                                ),
-                              );
-                            },
+                            onPressed: () => Navigator.pop(context),
                             icon: Icon(
                               Icons.arrow_back_ios,
                               color: Colors.white,

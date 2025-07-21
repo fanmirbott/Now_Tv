@@ -1,3 +1,5 @@
+import 'package:dars10/OnboardingPage.dart';
+import 'package:dars10/rewardDetailPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -113,8 +115,13 @@ class _RewardPageState extends State<RewardPage> {
                         Spacer(),
                         Padding(
                           padding: const EdgeInsets.only(top: 16, right: 12),
-                          child: ElevatedButton(
-                            onPressed: () {},
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => OnboardingPage(),));
+                              setState(() {
+                              });
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFFFFFFFF),
                               minimumSize: Size(115, 29),
@@ -156,7 +163,6 @@ class _RewardPageState extends State<RewardPage> {
               ],
             ),
           ),
-          SizedBox(height: 28),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -168,7 +174,7 @@ class _RewardPageState extends State<RewardPage> {
               ),
             ),
           ),
-          SizedBox(height: 12),
+          SizedBox(height: 16),
           GridView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -212,60 +218,72 @@ class _RewardPageState extends State<RewardPage> {
                             topLeft: Radius.circular(14),
                           ),
                         ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 17, top: 9),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    items[index]["text1"],
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => RewardDetailPage(),));
+                            setState(() {
+
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 17, top: 9),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      items[index]["text1"],
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    items[index]["text2"],
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
+                                    Text(
+                                      items[index]["text2"],
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    items[index]["text3"],
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
+                                    Text(
+                                      items[index]["text3"],
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 15, left: 12),
-                              child: Stack(
-                                children: [
-                                  Image.asset(
-                                    items[index]["img1"],
-                                    color: Colors.white.withOpacity(0.5),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 39, left: 20),
-                                    child: Image.asset(
-                                      items[index]["img2"],
-                                      color: items[index]["colors3"],
-                                      width: 54,
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 15, left: 12),
+                                child: Stack(
+                                  children: [
+                                    Image.asset(
+                                      items[index]["img1"],
+                                      color: Colors.white.withOpacity(0.5),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 39, left: 20),
+                                      child: Image.asset(
+                                        items[index]["img2"],
+                                        color: items[index]["colors3"],
+                                        width: 54,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Padding(
@@ -311,7 +329,9 @@ class _RewardPageState extends State<RewardPage> {
                           style: IconButton.styleFrom(
                             fixedSize: Size(77, double.infinity),
                             minimumSize: Size(77, 28),
-                            backgroundColor: canRedeem ? Color(0xFF00A3B7) : Colors.grey[700],
+                            backgroundColor: canRedeem
+                                ? Color(0xFF00A3B7)
+                                : Colors.grey[700],
                           ),
                           icon: Align(
                             child: Text(

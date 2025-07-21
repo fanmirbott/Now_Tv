@@ -86,11 +86,7 @@ They drew 0-0 away to Sassuolo then suffered a narrow 1-0 defeat at home to Mila
                 ),
                 Positioned(
                   child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      );
-                    },
+                    onPressed: () => Navigator.pop(context),
                     icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                   ),
                 ),
