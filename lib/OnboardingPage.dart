@@ -169,7 +169,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 child: IconButton(
                   onPressed: () {
                     if (isActiv == 0) {
-                      _pageController.jumpToPage(2); // Skip
+                      _pageController.jumpToPage(2);
                     } else {
                       _pageController.previousPage(
                         duration: Duration(milliseconds: 300),
@@ -179,7 +179,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
                   icon: Text(
-                    isActiv == 0 ? "Skip" : "Back",  // Matnni ham moslashtiramiz
+                    isActiv == 0 ? "Skip" : "Back",
                     style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
