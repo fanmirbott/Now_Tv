@@ -1,3 +1,4 @@
+import 'package:dars10/loginPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   late PageController _pageController;
   int isActiv = 0;
+
   @override
   void initState() {
     super.initState();
@@ -57,19 +59,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
   ];
 
   List<Map> items1 = [
-    {
-      "text": "Next",
-      "text1": "Skip",
-    },
-    {
-      "text": "Next",
-      "text1": "Back",
-    },
+    {"text": "Next", "text1": "Skip"},
+    {"text": "Next", "text1": "Back"},
 
-    {
-      "text": "Let’s Get Started",
-      "text1": "Back",
-    },
+    {"text": "Let’s Get Started", "text1": "Back"},
   ];
 
   @override
@@ -148,7 +141,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 width: 336,
                 height: 40,
                 child: IconButton(
-                  onPressed: nextPage,
+                  onPressed: () {
+                    if (isActiv > 1) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    } else {
+                      nextPage();
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF00A3B7),
                   ),
@@ -188,7 +190,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   ),
                 ),
               ),
-
             ],
           ),
         ],
